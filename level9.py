@@ -91,18 +91,6 @@ class Interpreter:
                 self.relative_base += p
                 self.instr_index = self.instr_index + 2
 
-
-def execute_amplifiers(amplifiers, phases):
-    iterations = 0
-    while not amplifiers[4].is_halted():
-        index = 0
-        for phase in phases:
-            amplifiers[index].parse([int(phase), amplifiers[index].previous_amp.get_output()])
-            index+=1
-        iterations+=1
-    return amplifiers[4].get_output()
-
-
 f = open("input9.txt", "r")
 initial_instruction = list(map(lambda x: int(x),f.readline().split(",")))
 instruction_map = {x:y for x, y in enumerate(initial_instruction,0)}
